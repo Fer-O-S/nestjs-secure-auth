@@ -1,6 +1,6 @@
 import { Body, Controller, Param, ParseIntPipe, Patch, Post, Get } from '@nestjs/common';
 import { UsersService } from './users.service';
-import { CreateUserDto, UpdateUser } from './dtos/create-user.dto';
+import { CreateUserDto, UpdateUserDto } from './dtos/create-user.dto';
 import { ApiTags } from '@nestjs/swagger';
 
 @ApiTags('Users')
@@ -15,7 +15,7 @@ export class UsersController {
     }
 
     @Patch(':id')
-    async UpdateUser(@Param('id', ParseIntPipe) id:number, @Body() dto: UpdateUser ) {
+    async UpdateUser(@Param('id', ParseIntPipe) id:number, @Body() dto: UpdateUserDto ) {
         await this.UserService.updateUser(id,dto)
         return 'User update'
     }
